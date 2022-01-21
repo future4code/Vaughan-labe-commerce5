@@ -1,36 +1,45 @@
-import React from 'react';
-import './App.css';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-CarrinhoDeComprasBox = styled.div`
-display: flex;
-flex-direction: column;
-border: 1px solid black;
+const Carrinho = styled.div`
+  border: 1px solid black;
 `
 
-class CarrinhoDeCompras extends React.Component {
+class CarrinhoDeCompras extends React.Component{
   state = {
-    produtos: [
-      {id: 1, nome: "camisa estampada branca", preco: 50},
-      {id: 2, nome: "camisa estampada preta", preco: 60}
-    ]
+    adicionado: false,
+    numeroItens: 0,
+    valorTotal: 0
   }
 
-  removerProduto = (idDeletar) => {
-    const copiaListaDeProdutos = [...this.state.produtos];
-    const produtosRestantes = copiaListaDeProdutos.filter((produto) => {
-      return idDeletar !== produto.id;
-    })
-    this.setState({produtos: produtosRestantes})
-  }
+  onClickAdicionar = () => {
+    let novoNumeroItens;
+  
 
+  if(this.state.adicionado) {
+    novoNumeroItens = this.state.numeroItens - 1;
+  } else {
+    novoNumeroItens = this.state.numeroItens + 1;
+  }
+  this.setState({
+    adicionado: !this.state.adicionado,
+    numeroItens: novoNumeroItens
+  })
+}
+
+  removerProduto = (IdDeletar) => {
+    const copiaLista = [...this.state.produtos]
+    const produtos = copiaLista.filter((produto) => {
+      return IdDeletar !== produto.id;
+    })  
+    this.setState({listaDeProdutos: produtos})}
+  
   render(){
-      return(
-          <CarrinhoDeComprasBox>
-              {produtos.nome}
-              <button onClick={() => {this.removerProduto(produto.id);}}>Remover</button>
-          </CarrinhoDeComprasBox>
-      )
+    return (
+      <div>
+        <button onClick={this.removerProduto}>Remover</button>
+      </div>
+    )
   }
 }
 

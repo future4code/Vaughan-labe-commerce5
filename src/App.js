@@ -1,6 +1,9 @@
 import React from 'react';
 import './App.css';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import CarrinhoDeCompras from './components/CarrinhoDeCompras/CarrinhoDeCompras';
+
+
 
 const Root = styled.div`
   display: grid;
@@ -34,8 +37,12 @@ class App extends React.Component {
     return (
       <Root>
         <Filtros><h3>Filtros:</h3></Filtros>
-        <Produtos><p>Quantidade de Produtos: </p> <p>Ordenação: </p></Produtos>
-        <Carrinho><h3>Carrinho:</h3></Carrinho>
+        <Produtos><p>Quantidade de Produtos:
+          <Produtos></Produtos>
+        </p> <p>Ordenação: </p></Produtos>
+        <Carrinho><h3>Carrinho:</h3>
+        <CarrinhoDeCompras></CarrinhoDeCompras>
+        </Carrinho>
       </Root>    
     );
   }
