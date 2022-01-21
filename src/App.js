@@ -53,6 +53,32 @@ const ProductImg = styled.div`
   /* display: flex; */
   flex-direction: column;
 `
+const listaProdutos = [
+  {
+    id: 1,
+    name: 'Produto 1',
+    price: 30,
+    photo: 'https://picsum.photos/200/200?a=1'
+  },
+  {
+    id: 2,
+    name: 'Produto 2',
+    price: 85,
+    photo: 'https://picsum.photos/200/200?a=2'
+  },
+  {
+    id: 3,
+    name: 'Produto 3',
+    price: 45,
+    photo: 'https://picsum.photos/200/200?a=3'
+  },
+  {
+    id: 4,
+    name: 'Produto 4',
+    price: 80,
+    photo: 'https://picsum.photos/200/200?a=4'
+  }
+]
 
 class App extends React.Component {
 
@@ -83,27 +109,41 @@ class App extends React.Component {
 
           <Produtos>
             <HeaderProdutos>
-              <p>Quantidade de Produtos:</p> 
+              <p>Quantidade de Produtos:</p>
               <label>Ordenação</label>
             </HeaderProdutos>
 
             <CardContainers>
               <ProductImg>
-                <img src='https://picsum.photos/200'/>
-                <p>Card de Exemplo 1</p>
+                <img src='https://picsum.photos/200' />
+                <p>Produto 1</p>
+                <button>adicionar ao carrinho</button>
               </ProductImg>
-              
+
               <ProductImg>
-                <img src='https://picsum.photos/200'/>
-                <p>Card de Exemplo 2</p>
+                <img src='https://picsum.photos/200' />
+                <p>Produto 2</p>
+                <button>adicionar ao carrinho</button>
               </ProductImg>
-                          
+
+              <ProductImg>
+                <img src='https://picsum.photos/200' />
+                <p>Produto 3</p>
+                <button>adicionar ao carrinho</button>
+              </ProductImg>
+
+              <ProductImg>
+                <img src='https://picsum.photos/200' />
+                <p>Produto 4</p>
+                <button>adicionar ao carrinho</button>
+              </ProductImg>
+
             </CardContainers>
-            
+
           </Produtos>
 
           <Carrinho><h3>Carrinho:</h3></Carrinho>
-        </Root>    
+        </Root>
       </RootDoRoot>
     );
   }
