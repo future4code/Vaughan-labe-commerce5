@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import CarrinhoDeCompras from './components/CarrinhoDeCompras/CarrinhoDeCompras';
 
 const RootDoRoot = styled.div`
   display: block;
@@ -124,6 +125,20 @@ class App extends React.Component {
     })
   }
 
+  adicionarProduto = (IdParaAdicionar) => {
+    const listaCopiada = [...this.state.produtos]
+    const produtoAdicionado = listaCopiada.filter((prod) => {
+        return IdParaAdicionar === prod.id;
+    })
+    this.setState({produtos: produtoAdicionado})
+} 
+
+removerProduto = (IdDeletar) => {
+  const copiaLista = [...this.state.produtos]
+  const listaDeProdutos = copiaLista.filter((produto) => {
+    return IdDeletar !== produto.id;
+  })  
+  this.setState({produtos: listaDeProdutos})}
 
 
   render() {
@@ -133,7 +148,7 @@ class App extends React.Component {
         <ProductImg>
           <img src={produto.photo}/>
           <p>{produto.name}</p>
-          <button>Adicionar ao Carrinho</button>
+          <button onClick={() => {this.adicionarProduto()}}>Adicionar</button>
         </ProductImg>
       </>
     })
@@ -173,12 +188,13 @@ class App extends React.Component {
             </HeaderProdutos>
 
             <CardContainers>
-              {osProdutos}              
+              {osProdutos}             
             </CardContainers>
             
           </Produtos>
 
-          <Carrinho><h3>Carrinho:</h3></Carrinho>
+          <Carrinho><h3>Carrinho:</h3>
+          <CarrinhoDeCompras></CarrinhoDeCompras></Carrinho>
         </Root>    
       </RootDoRoot>
     </>
